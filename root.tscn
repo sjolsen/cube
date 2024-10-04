@@ -14,7 +14,8 @@ script = ExtResource("1_qp0ec")
 mesh = SubResource("BoxMesh_yxuus")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.85264, -0.251716, 0.457869, 0, 0.876307, 0.481754, -0.522499, -0.410763, 0.747174, 2.173, 2.5, 4.233)
+transform = Transform3D(0.866025, -0.17101, 0.469846, 0, 0.939693, 0.34202, -0.5, -0.296198, 0.813798, 5.17389, 3.86987, 9.68873)
+fov = 35.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, -0.25, 0.433013, -1.0334e-09, 0.866026, 0.5, -0.5, -0.433013, 0.75, 17, 11, 15)
