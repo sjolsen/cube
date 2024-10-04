@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://i3hcceahk7m5"]
+
+[ext_resource type="Script" path="res://cube.gd" id="1_qp0ec"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yxuus"]
+size = Vector3(3, 3, 3)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Cube" type="Node3D" parent="."]
+script = ExtResource("1_qp0ec")
+
+[node name="PlaceholderMesh" type="MeshInstance3D" parent="Cube"]
+mesh = SubResource("BoxMesh_yxuus")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.85264, -0.251716, 0.457869, 0, 0.876307, 0.481754, -0.522499, -0.410763, 0.747174, 2.173, 2.5, 4.233)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.25, 0.433013, -1.0334e-09, 0.866026, 0.5, -0.5, -0.433013, 0.75, 17, 11, 15)
