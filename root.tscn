@@ -1,21 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://i3hcceahk7m5"]
+[gd_scene load_steps=7 format=3 uid="uid://i3hcceahk7m5"]
 
 [ext_resource type="Script" path="res://cube.gd" id="1_qp0ec"]
+[ext_resource type="Script" path="res://input_controller.gd" id="2_p0ohl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yxuus"]
 size = Vector3(3, 3, 3)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_er7ic"]
+sky_top_color = Color(0.4331, 0.548475, 0.71, 1)
+ground_bottom_color = Color(0.34, 0.4, 0.342, 1)
+
+[sub_resource type="Sky" id="Sky_04mlq"]
+sky_material = SubResource("ProceduralSkyMaterial_er7ic")
+
+[sub_resource type="Environment" id="Environment_mpp60"]
+background_mode = 2
+sky = SubResource("Sky_04mlq")
+ambient_light_source = 3
+reflected_light_source = 2
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Cube" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.92388, 0, -0.382683, -0.146447, 0.92388, -0.353553, 0.353553, 0.382683, 0.853553, 0, 0, 0)
+rotation_order = 0
 script = ExtResource("1_qp0ec")
 
 [node name="PlaceholderMesh" type="MeshInstance3D" parent="Cube"]
 mesh = SubResource("BoxMesh_yxuus")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.866025, -0.17101, 0.469846, 0, 0.939693, 0.34202, -0.5, -0.296198, 0.813798, 5.17389, 3.86987, 9.68873)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mpp60")
+
+[node name="Camera3D" type="Camera3D" parent="WorldEnvironment"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 fov = 35.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, -0.25, 0.433013, -1.0334e-09, 0.866026, 0.5, -0.5, -0.433013, 0.75, 17, 11, 15)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, -0.25, 0.433013, -1.0334e-09, 0.866025, 0.5, -0.5, -0.433013, 0.75, 17, 11, 15)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9166, 12.5732, 22.1905)
+light_energy = 20.0
+light_size = 0.34
+omni_range = 129.569
+
+[node name="InputController" type="Node" parent="."]
+script = ExtResource("2_p0ohl")
