@@ -2,4 +2,7 @@
 .godot/
 /android/
 
+# Blender backup files
 *.blend1
+# Auto-generated resource files
+cubie/*.res
